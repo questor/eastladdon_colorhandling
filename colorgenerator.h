@@ -10,6 +10,7 @@
 #include "eastl/vector.h"
 #include "eastl/extra/floatutils.h"
 #include "colorRGB.h"
+#include "colorSRGB.h"
 #include "colorHSL.h"
 
 class ColorGenerator {
@@ -83,8 +84,10 @@ public:
       float currentHue = randGen.randf();
       for(int i=0; i<numberColors; ++i) {
          colorHSL hslColor(currentHue, saturation, luminance);
+         colorSRGB tempColor;
          colorRGB newColor;
-         newColor.assign(hslColor);
+         tempColor.assign(hslColor);
+         newColor.assign(tempColor);
          mColors.pushBack(newColor);
 
          currentHue += eastl::GOLDEN_RATIO;
@@ -115,8 +118,10 @@ public:
          tempColor.hue = fmod(((referenceAngle + randomAngle) / 360.0f), 1.0f);
          tempColor.saturation = saturation;
          tempColor.lightness = luminance;
+         colorSRGB convColor;
          colorRGB newColor;
-         newColor.assign(tempColor);
+         convColor.assign(tempColor);
+         newColor.assign(convColor);
          mColors.pushBack(newColor);
       }
    }
@@ -131,9 +136,9 @@ public:
       for(int i=0; i<numberColors; ++i) {
          int randomIndex = randGen.rand() % 3;
 
-         float mixRatio1 = (randomIndex == 0) ? random.randf()*greyControl : random.randf();
-         float mixRatio2 = (randomIndex == 1) ? random.randf()*greyControl : random.randf();
-         float mixRatio3 = (randomIndex == 2) ? random.randf()*greyControl : random.randf();
+         float mixRatio1 = (randomIndex == 0) ? randGen.randf()*greyControl : randGen.randf();
+         float mixRatio2 = (randomIndex == 1) ? randGen.randf()*greyControl : randGen.randf();
+         float mixRatio3 = (randomIndex == 2) ? randGen.randf()*greyControl : randGen.randf();
 
          float sum = mixRatio1 + mixRatio2 + mixRatio3;
 

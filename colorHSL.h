@@ -11,6 +11,9 @@ struct colorHSL {
 
    colorHSL() {}
    explicit colorHSL(const colorSRGB &srgb);
+   explicit colorHSL(float h, float s, float l) {
+      hue = h; saturation = s; lightness = l;
+   }
 
    void assign(const colorSRGB &source);
 };
