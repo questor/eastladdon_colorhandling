@@ -2,6 +2,8 @@
 #ifndef __PICTUREGRADIENT_H__
 #define __PICTUREGRADIENT_H__
 
+#ifdef ENABLE_PICTUREGRADIENT
+
 #include "eastl/types.h"
 
 /* uses a picture as gradientbase */
@@ -22,8 +24,10 @@ public:
    }
 
 protected:
-   int_t mWidth, mHeight;
+   int32_t mWidth, mHeight;
    uint32_t* mPixel;
 };
 
-#endif
+#endif   //#ifdef ENABLE_PICTUREGRADIENT
+
+#endif   //#ifndef __PICTUREGRADIENT_H__

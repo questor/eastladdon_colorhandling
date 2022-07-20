@@ -1,4 +1,6 @@
 
+#ifdef ENABLE_PICTUREGRADIENT
+
 #include "picturegradient.h"
 
 #include "stb_image/stb_image.h"
@@ -28,3 +30,5 @@ bool PictureGradient::init(const char *filename) {
    }
    return mPixel != NULL;
 }
+
+#endif   //#ifdef ENABLE_PICTUREGRADIENT

@@ -7,7 +7,7 @@
 
 // many color conversions taken from here: http://www.brucelindbloom.com/index.html
 
-#include "vector"
+#include "eastl/vector.h"
 #include "eastl/extra/floatutils.h"
 #include "colorRGB.h"
 #include "colorHSL.h"
@@ -154,7 +154,7 @@ public:
    }
 
 protected:
-   stl::vector<colorRGB> mColors;
+   eastl::vector<colorRGB> mColors;
 };
 
 #endif   //#ifndef __COLORHANDLING_COLORGENERATOR_H__
